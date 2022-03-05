@@ -305,7 +305,7 @@ def create_current_queue_message(guildId):
     counter = 1
     for memberId, memberInfo in memberDict.items():
         memberName = client.get_user(memberId).name
-        if len(memberName > 14):
+        if len(memberName) > 14:
             memberName = memberName[0:15] + ".."
         hours = int((time.time() - memberInfo["time_joined"]) / 3600)
         minutes = int((time.time() - memberInfo["time_joined"]) % 3600 / 60)
