@@ -56,7 +56,7 @@ async def on_message(message):
                         if channel:
                             if channel.type[0] == "voice":
                                 db.set_voice_id(message.guild.id, int(args[2]))
-                                await message.channel.send("Voice id is now ".format(int(args[2])))
+                                await message.channel.send("Voice id is now {0}".format(int(args[2])))
                             else:
                                 await message.channel.send(
                                     "Please provide a voiceid and not a textid. Type {0}help for more information".format(
@@ -78,7 +78,7 @@ async def on_message(message):
                         if channel:
                             if channel.type[0] == "text":
                                 db.set_text_id(message.guild.id, int(args[2]))
-                                await message.channel.send("Text id is now ".format(int(args[2])))
+                                await message.channel.send("Text id is now {0}".format(int(args[2])))
                             else:
                                 await message.channel.send(
                                     "Please provide a textid and not a voiceid. Type {0}help for more information".format(
