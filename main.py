@@ -113,7 +113,8 @@ async def on_message(message):
                                     args[2]))
                         else:
                             await message.channel.send(
-                            "The savetime must be an integer larger or equal to zero. Type {0}help for more information".format(botPrefix))
+                                "The savetime must be an integer larger or equal to zero. Type {0}help for more information".format(
+                                    botPrefix))
                     else:
                         await message.channel.send(
                             "The savetime must be an integer. Type {0}help for more information".format(botPrefix))
@@ -137,7 +138,8 @@ async def on_message(message):
             elif args[1] == "prefix":
                 await message.channel.send("Current prefix is {0}".format(db.get_bot_prefix(message.guild.id)))
             elif args[1] == "savetime":
-                await message.channel.send("Current savetime is {0} minutes".format(db.get_queue_save_time(message.guild.id)))
+                await message.channel.send(
+                    "Current savetime is {0} minutes".format(db.get_queue_save_time(message.guild.id)))
         else:
             await message.channel.send(
                 "Please provide a parameter for what you want to get. Type {0}help for more information".format(
@@ -320,7 +322,9 @@ def create_current_queue_message(guildId):
 
         if memberInfo["last_seen"]:
             timeLeftBeforeRemoval = db.get_queue_save_time(guildId) * 60 - (time.time() - memberInfo["last_seen"])
-            message += "(Currently not in queue, entry will be removed in {0}m {1}s)\n".format(int(timeLeftBeforeRemoval / 60), int(timeLeftBeforeRemoval % 60))
+            message += "(Currently not in queue, entry will be removed in {0}m {1}s)".format(
+                int(timeLeftBeforeRemoval / 60), int(timeLeftBeforeRemoval % 60))
+        message += "\n"
         counter += 1
     return "```List of users in the queue: \n" + message + "```"
 
