@@ -208,8 +208,10 @@ async def queue_message_loop():
             await textChannel.send(content=create_current_queue_message(guild.id))
         elif lastMessage is not None and lastMessage.author.id != client.user.id:
             await textChannel.send(content=create_current_queue_message(guild.id))
-        else:
+        elif lastMessage is not None and lastMessage.author.id == client.user.id:
             await lastMessage.edit(content=create_current_queue_message(guild.id))
+        else:
+            print("I have no idea what other case there is.")
 
         async for msg in textChannel.history(limit=20):
             if firstMsg:
