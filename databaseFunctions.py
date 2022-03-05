@@ -6,24 +6,6 @@ def connect_to_database():
     conn.row_factory = sqlite3.Row
     return conn
 
-
-def get_text_and_voice_id(guildId):
-    # connects to database and initializes cursor
-    conn = connect_to_database()
-    c = conn.cursor()
-
-    # fetches text and voice channel id
-    c.execute("SELECT text_channel_id, voice_channel_id FROM preferences WHERE guild_id = ?", [guildId])
-    row = c.fetchone()
-
-    if not row["text_channel_id"] or not row["voice_channel_id"]:
-        conn.close()
-        return None
-
-    conn.close()
-    return [row["text_channel_id"], row["voice_channel_id"]]
-
-
 def get_text_id(guildId):
     # connects to database and initializes cursor
     conn = connect_to_database()
@@ -33,7 +15,7 @@ def get_text_id(guildId):
     c.execute("SELECT text_channel_id FROM preferences WHERE guild_id = ?", [guildId])
     row = c.fetchone()
 
-    if not row["text_channel_id"]:
+    if not row:
         conn.close()
         return None
 
@@ -50,7 +32,7 @@ def get_voice_id(guildId):
     c.execute("SELECT voice_channel_id FROM preferences WHERE guild_id = ?", [guildId])
     row = c.fetchone()
 
-    if not row["voice_channel_id"]:
+    if not row:
         conn.close()
         return None
 
