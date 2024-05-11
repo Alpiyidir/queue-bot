@@ -1,1 +1,2 @@
 # discord-bot
+A Python program that uses the pycord library to automatically keep a track of how long each user has been in a voice channel. The bot then keeps track of who’s been in a voice channel the longest effectively creating a queue. The bot displays this information by posting a message to chat and updating that message every few seconds to show the current state of the queue. Bot parameters can be set by chat commands and are stored in a local sqlite3 database.
